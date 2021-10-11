@@ -1,0 +1,17 @@
+<div>Create Article</div>
+
+<form [formGroup]="createArticleForm">
+  <input id="title" type="text" formControlName="title" placeholder="Title" />
+  <textarea id="body" formControlName="body" placeholder="Body"></textarea>
+  <button (click)="onReset()">Reset</button>
+  <button
+    type="submit"
+    [disabled]="!createArticleForm.valid"
+    (click)="onSubmit()"
+  >
+    Submit
+  </button>
+</form>
+
+<p>Title: {{ createArticleForm.value.title }}</p>
+<p>Body: {{ createArticleForm.value.body }}</p>
