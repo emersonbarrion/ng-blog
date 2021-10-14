@@ -5,7 +5,7 @@ import { ArticleEntity, CreateArticleRequest, UpdateArticleRequest } from "./art
 // Get all articles
 export const getArticles = createAction(
     '[Articles] Get Articles',
-    props<{ userId: string }>()
+    props<{ id: string, title: string, userName: string, userId: string }>()
 );
 
 export const getArticlesSuccess = createAction(

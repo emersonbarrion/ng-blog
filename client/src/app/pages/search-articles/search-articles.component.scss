@@ -1,0 +1,23 @@
+.search-header-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+input {
+  flex: 1;
+  margin-right: 20px;
+  width: 100%;
+}
+
+form {
+  width: 100%;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.dropdown {
+  cursor: pointer;
+}

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { LoginRequest, UserEntity } from "./user.model";
 import { Observable, throwError } from "rxjs";
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -19,6 +19,13 @@ export class UserService {
     loginUser(body: LoginRequest): Observable<UserEntity> {
         return this.http
             .post<UserEntity>('/api/auth/login', body)
-            .pipe(catchError(error => throwError(error)));
+            .pipe(
+                tap(user => {
+                    this.authInfo.id = user.id;
+                    this.authInfo.username = user.username;
+                    this.authInfo.token = user.token;
+                }),
+                catchError(error => throwError(error))
+            );
     }
 }

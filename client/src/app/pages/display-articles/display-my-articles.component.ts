@@ -18,7 +18,7 @@ export class DisplayMyArticlesComponent implements OnInit {
     constructor(private store$: Store<BlogState>, private userService: UserService) { }
 
     ngOnInit() {
-        this.store$.dispatch(getArticles({ userId: this.userService.authInfo.id }));
+        this.store$.dispatch(getArticles({ id: "", title: "", userName: "", userId: this.userService.authInfo.id }));
         this.store$.pipe(
             select(selectFeatureArticles),
             filter(state => !!state),

@@ -1,1 +1,40 @@
-<p>search-articles works!</p>
+<div class="card">
+  <h1>Search Articles</h1>
+  <div class="search-header-section">
+    <form [formGroup]="searchArticleForm">
+      <input
+        id="search"
+        type="text"
+        formControlName="searchInput"
+        placeholder="Search Text"
+      />
+    </form>
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Select search field
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><div (click)="onSearchField('id')">Article Id</div></li>
+        <li><div (click)="onSearchField('title')">Title</div></li>
+        <li><div (click)="onSearchField('author')">Author</div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="list-group" *ngIf="articles.length">
+    <a
+      *ngFor="let article of articles; trackBy: trackById"
+      class="nav-link list-group-item list-group-item-action"
+      [routerLink]="['/articles', article.slug]"
+      routerLinkActive="active"
+    >
+      {{ article.title }}
+    </a>
+  </div>
+  <div *ngIf="!articles.length">No results found.</div>
+</div>

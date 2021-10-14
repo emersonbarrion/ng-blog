@@ -58,8 +58,19 @@ const articleValidate = [
 
 // Get all articles
 router.get("/", (req, res) => {
+	if (req.query.id) {
+		return res.send(articles.filter((a) => a.id === req.query.id));
+	}
+	if (req.query.title) {
+		return res.send(articles.filter((a) => a.title === req.query.title));
+	}
 	if (req.query.userId) {
 		return res.send(articles.filter((a) => a.userId === req.query.userId));
+	}
+	if (req.query.userName) {
+		return res.send(
+			articles.filter((a) => a.userName === req.query.userName)
+		);
 	}
 
 	res.send(articles);

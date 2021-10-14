@@ -28,7 +28,7 @@
     </div>
     <div class="auth-action-panel">
       <div class="navbar-nav">
-        <div class="greeting">Hi, {{ user.username }}</div>
+        <div *ngIf="user.token" class="greeting">Hi, {{ user.username }}</div>
         <a
           *ngIf="!user.token"
           class="nav-link"
@@ -37,13 +37,6 @@
           >Login</a
         >
         <a *ngIf="user.token" class="nav-link" (click)="onLogout()">Logout</a>
-        <a
-          *ngIf="!user.token"
-          class="nav-link"
-          routerLink="/register"
-          routerLinkActive="active"
-          >Register</a
-        >
       </div>
     </div>
   </div>

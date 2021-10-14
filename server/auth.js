@@ -67,7 +67,7 @@ router.post("/login", authValidate, (req, res) => {
 
 	const user = users.find((u) => u.username === req.body.username);
 
-	if (!user) return res.status(401).send("Username or Password invalid");
+	if (!user) return res.status(400).send("Username or Password invalid");
 
 	const isPasswordCorrect = bcrypt.compareSync(
 		req.body.password,
@@ -75,7 +75,7 @@ router.post("/login", authValidate, (req, res) => {
 	);
 
 	if (!isPasswordCorrect)
-		return res.status(401).send("Username or Password invalid");
+		return res.status(400).send("Username or Password invalid");
 
 	const payload = { id: user.id };
 	const token = jwt.encode(payload, TOKEN_SALT);

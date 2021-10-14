@@ -8,9 +8,9 @@ import { catchError, map } from 'rxjs/operators';
 export class ArticlesService {
     constructor(private http: HttpClient) { }
 
-    getArticles(userId: string): Observable<ArticleEntity[]> {
+    getArticles(params: { id?: string, userId?: string, userName?: string, title?: string }): Observable<ArticleEntity[]> {
         return this.http
-            .get<ArticleEntity[]>(`/api/articles`, { params: { userId } })
+            .get<ArticleEntity[]>(`/api/articles`, { params })
             .pipe(
                 map(articles => articles || []),
                 catchError(error => throwError(error))

@@ -37,8 +37,4 @@ export class LoginComponent implements OnInit {
             password: this.loginForm.get('password')?.value
         }));
     }
-
-    onRegister() {
-        console.log('REDIRECT TO REGISTER PAGE');
-    }
 }

@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: 'my-articles', component: DisplayMyArticlesComponent, canActivate: [AuthGuard] },
     { path: 'create-article', component: CreateArticleComponent, canActivate: [AuthGuard] },
     { path: 'edit-article', component: EditArticleComponent, canActivate: [AuthGuard] },
-    { path: 'search-articles', component: SearchArticlesComponent, canActivate: [AuthGuard] },
+    { path: 'search-articles', component: SearchArticlesComponent },
     { path: 'articles/:slug', component: DisplayArticleComponent },
     { path: 'articles', component: DisplayArticlesComponent },
     { path: 'login', component: LoginComponent },

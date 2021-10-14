@@ -10,7 +10,7 @@ import { ArticlesService } from "./articles.service";
 export class ArticlesEffects {
     getArticles$ = createEffect(() => this.actions$.pipe(
         ofType(getArticles),
-        switchMap(action => this.service.getArticles(action.userId || "")
+        switchMap(action => this.service.getArticles({ id: action.id, title: action.title, userName: action.userName, userId: action.userId })
             .pipe(
                 map(articles => getArticlesSuccess({ articles })),
                 catchError(_ => of(getArticlesFailed({ userId: action.userId, error: 'Unexpected errors while fetching articles' })))
