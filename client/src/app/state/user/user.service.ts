@@ -8,6 +8,11 @@ import { catchError } from 'rxjs/operators';
 export class UserService {
 
     isAuthenticated = false;
+    authInfo = {
+        id: localStorage.getItem('id') || "",
+        username: localStorage.getItem('username') || "",
+        token: localStorage.getItem('token') || ""
+    };
 
     constructor(private http: HttpClient) { }
 

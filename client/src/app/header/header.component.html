@@ -6,14 +6,21 @@
           ><i class="fa fa-folder"></i> Articles</a
         >
         <a
+          *ngIf="user.token"
           class="nav-link"
-          routerLink="/articles/create"
+          routerLink="/my-articles"
+          routerLinkActive="active"
+          ><i class="fa fa-folder"></i> My Articles</a
+        >
+        <a
+          class="nav-link"
+          routerLink="/create-article"
           routerLinkActive="active"
           ><i class="fa fa-file"></i> Create Article</a
         >
         <a
           class="nav-link"
-          routerLink="/articles/search"
+          routerLink="/search-articles"
           routerLinkActive="active"
           ><i class="fa fa-search"></i> Search</a
         >
@@ -21,6 +28,7 @@
     </div>
     <div class="auth-action-panel">
       <div class="navbar-nav">
+        <div class="greeting">Hi, {{ user.username }}</div>
         <a
           *ngIf="!user.token"
           class="nav-link"

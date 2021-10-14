@@ -1,15 +1,14 @@
 <div class="card">
-  <h1>Create Article</h1>
-  <form [formGroup]="createArticleForm">
+  <h1>Edit Article</h1>
+  <form [formGroup]="editArticleForm">
     <input id="title" type="text" formControlName="title" placeholder="Title" />
     <textarea id="body" formControlName="body" placeholder="Body"></textarea>
 
     <div class="action-panel">
-      <button class="btn btn-primary" (click)="onReset()">Reset</button>
       <button
         class="btn btn-primary"
         type="submit"
-        [disabled]="!createArticleForm.valid"
+        [disabled]="!editArticleForm.valid"
         (click)="onSubmit()"
       >
         Submit

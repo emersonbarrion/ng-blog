@@ -11,13 +11,17 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './pages/login/login.component';
 import { blogReducer } from './state/blog.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ArticlesEffects } from './state/articles/articles.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { CreateArticleComponent } from './pages/create-article/create-article.component';
 import { SearchArticlesComponent } from './pages/search-articles/search-articles.component';
 import { UserEffects } from './state/user/user.effects';
+import { AuthInterceptorService } from './auth-interceptor.service';
+import { DisplayArticleComponent } from './pages/display-article/display-article.component';
+import { DisplayMyArticlesComponent } from './pages/display-articles/display-my-articles.component';
+import { EditArticleComponent } from './pages/edit-article/edit-article.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +30,10 @@ import { UserEffects } from './state/user/user.effects';
         HeaderComponent,
         LoginComponent,
         CreateArticleComponent,
-        SearchArticlesComponent
+        SearchArticlesComponent,
+        DisplayArticleComponent,
+        DisplayMyArticlesComponent,
+        EditArticleComponent
     ],
     imports: [
         BrowserModule,
@@ -37,7 +44,11 @@ import { UserEffects } from './state/user/user.effects';
         EffectsModule.forRoot([ArticlesEffects, UserEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
     ],
-    providers: [],
+    providers: [{
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptorService,
+        multi: true
+    }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

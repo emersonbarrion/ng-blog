@@ -8,3 +8,8 @@ export const selectFeatureArticles = createSelector(
     selectFeature,
     (state: ArticlesState) => state.articles
 );
+
+export const selectFeatureArticle = createSelector(
+    selectFeature,
+    (state: ArticlesState) => state.article
+);
